@@ -15,10 +15,11 @@ import animeBallotAbi from './contracts/animeBallot.abi.json';
 import erc20Abi from './contracts/erc20.abi.json';
 import Group from './components/Group';
 import PrevWin from './components/PrevWin';
+import Footer from './components/Footer';
 
-const ERC20_DECIMALS = 18;
+const MY_ERC20_DECIMALS = 10; // I will be using 10 instead of 18 
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"
-const AnimeContractAddress = "0x29526616dCaa685Bfc003E05195b4D34ab4B3Ee8"
+const AnimeContractAddress = "0xc342bf51CFBB8400347Ba2132b79A266C42823F2"
 
 const cost = 2; // this is the cost to donate
 
@@ -33,7 +34,7 @@ function App() {
   // get data from blockchain
   const [everyAnime, setEveryAnime] = useState([]);
   const [currentGrp, setCurrentGrp] = useState([]);
-  const [reigningGrp, setReigningGrp] = useState([]);
+  const [reigningGrp, setReigningGrp] = useState([]); // change to null
   const [reigningWinner, setReigningWinner] = useState('');
   const [totalVoteCount, setTotalVoteCount] = useState(0);
   const [winningName, setWinningName] = useState('');
@@ -55,7 +56,6 @@ function App() {
   useEffect(() => {
     if (!kit) return ; // useeffect run first before checking dependecy, this ensure that it doesn't run before
     loadCeloContract()
-    console.log("yoo");
   }, [kit])
 
   useEffect(() => {
@@ -69,8 +69,12 @@ function App() {
   }, [contract])
 
   useEffect(() => {
+    if (!kit) return ;
+    getReigningGroup()
+  }, [contract])
+
+  useEffect(() => {
     if (!kit) return;
-    console.log('wahh');
     getTheWinner()
   }, [contract])
 
@@ -83,14 +87,14 @@ function App() {
   async function getCusd() {
     if (!kit) return;
     const celoBalance = await kit.getTotalBalance(kit.defaultAccount);
-    const cusdBalance = await celoBalance.cUSD.shiftedBy(-ERC20_DECIMALS).toFixed(2);
+    const cusdBalance = await celoBalance.cUSD.shiftedBy(-18).toFixed(2); 
     setBalance(cusdBalance);
   }
 
   async function donateToLike(animeName) {
     setLoading(true);
 
-    const amount = new BigNumber(cost).shiftedBy(ERC20_DECIMALS).toString();
+    const amount = new BigNumber(cost).shiftedBy(MY_ERC20_DECIMALS).toString();
 
     const cusdContract = await new kit.web3.eth.Contract(erc20Abi, cUSDContractAddress)
 
@@ -107,14 +111,13 @@ function App() {
                 // res should  be true or false
                 if (res) {
                   contract.methods.winningAnimeName().call()
-                    .then(res => {setWinningName(res); console.log('winningAnime', res)})
+                    .then(res => {setWinningName(res)})
                     .catch(err => console.error(err))
                   // begin winning voters selection process
                   // contract.methods.winningVoter().call()
                 }
               })
               .catch(err => console.error(err))
-            // console.log("isThereWinner", isThereWinner);
             // What you want it to do after voting
             setLoading(false);
           }).catch(error => {
@@ -122,7 +125,7 @@ function App() {
               ...toaster,
               show: true,
               status: 'error',
-              detail: error.message.length > 500 ? "You can't vote more than six times" : error.message
+              detail: error.message.length > 500 ? "You can't vote more than five times" : error.message
             })
             setLoading(false);
 
@@ -147,7 +150,15 @@ function App() {
       let createListReply = await contract.methods
       .createAnimeList(arr)
       .send({from: kit.defaultAccount});
-      console.log("createAnimeList", createListReply);
+
+      setToaster({
+        ...toaster,
+        show: true,
+        status: 'success',
+        detail: "Creation was successful"
+      })
+
+      setLoading(false);
       
     } catch (error) {
       console.error("create list error", error)
@@ -168,14 +179,25 @@ function App() {
     contract.methods.totalVoteCount().call()
       .then((res) => setTotalVoteCount(res))
     
-    // console.log("currentGrp", currentGrp);
-        
+  }
+
+  function getReigningGroup() {
+    // let winNum;
+    // await contract.methods.previousWinnerNum().call()
+    //   .then(res => winNum = res)
+
+
+    contract.methods.previousWinner().call()
+      .then(res => setReigningWinner(res))
+
+    contract.methods.previousAnimesGrp_().call()
+      .then(res => setReigningGrp(res))
+
   }
 
   function getTheWinner() {
     contract.methods.isThereWinner().call()
       .then(res => {
-        console.log("isThereWinner", res);
         // res should  be true or false
         if (res) {
           contract.methods.winningAnimeName().call()
@@ -200,11 +222,11 @@ function App() {
             console.log("Payment was successful");
             contract.methods.previousWinner().call()
               .then(res => setReigningWinner(res))
-            console.log(reigningWinner);
+            // console.log(reigningWinner);
             
             contract.methods.previousAnimesGrp_().call()
               .then(res => setReigningGrp(res))
-            console.log(reigningGrp);
+            // console.log(reigningGrp);
 
           }).catch(error => {
             setToaster({
@@ -229,23 +251,23 @@ function App() {
       })
   }
 
-  function getAnimeByNum(num) {
-    let yoo = contract.methods.animes_(num).call()
-    // it's a promise
-    console.log(yoo);
-  }
+  // function getAnimeByNum(num) {
+  //   let yoo = contract.methods.animes_(num).call()
+  //   // it's a promise
+  //   console.log(yoo);
+  // }
   
-  function getAnimeByName(str) {
-    let yoo = contract.methods.readAnimeByName(str).call()
-    // it's a promise
-    console.log(yoo);
-  }
+  // function getAnimeByName(str) {
+  //   let yoo = contract.methods.readAnimeByName(str).call()
+  //   // it's a promise
+  //   console.log(yoo);
+  // }
 
 
   
   async function getAllAnime() {
     let allAnime = await contract.methods.readAllAnime().call()
-    console.log('allAnime', allAnime);
+    // console.log('allAnime', allAnime);
     setEveryAnime(allAnime);
   }
 
@@ -259,14 +281,25 @@ function App() {
         await setKit(celoKit);
         await getCusd()
 
-        // console.log(kit);
-
       }
       catch (error) {
         console.error(error);
       }
     } else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider)
+      window.web3.eth.net.getId()
+        .then(async (res) => {
+          if (res == 44787) {
+            window.ethereum.send('eth_requestAccounts');
+            let celoKit = newKitFromWeb3(window.web3);
+            await setKit(celoKit);
+            await getCusd()
+            
+          } else {
+            alert("You need to switch to celo network on metamask")
+          }
+        }).catch(error => console.error(error))
+      // alert("You should access this with celo-browser extension")
     } else {
       alert("Get the celo browser extension from chrome extensions")
     }
@@ -275,7 +308,6 @@ function App() {
   async function loadCeloContract() {
     let address_ = await kit.web3.eth.getAccounts();
 
-    // console.log(address_);
     // get and set default address
     kit.defaultAccount = address_[0];
     await setAddress(address_[0]);
@@ -328,6 +360,7 @@ function App() {
         </Tab>
       </Tabs>
 
+      <Footer />
 
     </div>
   );

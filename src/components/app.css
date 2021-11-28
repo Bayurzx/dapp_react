@@ -5,8 +5,11 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  margin: 20% 50%;
+  margin: 20% 40%;
   animation: spin 2s linear infinite;
+  z-index: 120;
+  position: fixed;
+
 }
 
 @keyframes spin {
@@ -52,7 +55,7 @@
 input {
   border-radius: 20px;
   border: gray 3px solid;
-  padding: 20px 20px;
+  padding: 15px 15px;
   min-width: 500px;
 }
 
@@ -60,7 +63,7 @@ input {
   input {
     border-radius: 20px;
     border: gray 3px solid;
-    padding: 20px 20px;
+    padding: 15px 15px;
     min-width: auto;
   }
 }

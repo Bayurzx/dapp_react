@@ -5,7 +5,7 @@ import cosplayer from '../extra/cosplayer.png'
 function AddItems({ createAnimeList }) {
     const [animeInputGroup, setAnimeInputGroup] = useState([]);
 
-    const [animeInput, setAnimeInput] = useState({ animeName: "", animeImage: "", animeYouTube: "" });
+    const [animeInput, setAnimeInput] = useState({ animeName: "", animeImage: "", animeYouTube: "", animeDescription: "" });
 
     const addInputGroup = () => {
         if (animeInput.animeName.length < 2) {
@@ -14,7 +14,7 @@ function AddItems({ createAnimeList }) {
             //  console.log(animeInput);
             setAnimeInputGroup([...animeInputGroup, animeInput])
             addAnimeAnimation()
-            setAnimeInput({ animeName: "", animeImage: "", animeYouTube: "" });
+            setAnimeInput({ animeName: "", animeImage: "", animeYouTube: "", animeDescription: "" });
 
         }
     }
@@ -26,6 +26,7 @@ function AddItems({ createAnimeList }) {
         // console.log("onSubmit", JSON.stringify(dataArr));
         // we will be sending the dataArr to create anime list
         createAnimeList(dataArr)
+        setAnimeInputGroup([])
     }
 
     const addAnimeAnimation = () => {
@@ -49,33 +50,41 @@ function AddItems({ createAnimeList }) {
                     <div className="wd_layer">
                         <div className="text-center">
                             <h1 className="fw-bold">Add Picks</h1>
-                            <p className="fw-light mt-3">Add the details and click next to add another</p>
+                            <p className="fw-light mt-3">Add the details and click "add+" to add another</p>
                         </div>
 
                         <form action="" onSubmit={submitHandler} className="myform">
                             <div className="text-center">
                                 <input type="text"
-                                    placeholder="Anime Name"
+                                    id="addItems"
+                                    placeholder="Name"
                                     value={animeInput.animeName}
                                     onChange={e => setAnimeInput({ ...animeInput, animeName: e.target.value })}
                                 />
                             </div>
-                            <div className="text-center my-4">
+                            <div className="text-center my-3">
                                 <input type="text"
-                                    placeholder="Anime Image Link"
+                                    placeholder="Image Link"
                                     value={animeInput.animeImage}
                                     onChange={e => setAnimeInput({ ...animeInput, animeImage: e.target.value })}
                                 />
                             </div>
                             <div className="text-center">
                                 <input type="text"
-                                    placeholder="Anime YouTube Link"
+                                    placeholder="YouTube Trailer Link"
                                     value={animeInput.animeYouTube}
                                     onChange={e => setAnimeInput({ ...animeInput, animeYouTube: e.target.value })}
                                 />
                             </div>
+                            <div className="text-center my-3">
+                                <input type="text"
+                                    placeholder="Description"
+                                    value={animeInput.animeDescription}
+                                    onChange={e => setAnimeInput({ ...animeInput, animeDescription: e.target.value })}
+                                />
+                            </div>
                             <div>
-                                <button className="float-end my-4 btn btn-danger myButton btn_" onClick={addInputGroup}>Add Anime</button>
+                                <a type="button" className="float-end my-4 btn btn-danger myButton btn_" onClick={addInputGroup}>Add <sup>➕</sup></a>
                                 <span className="color_ color--blue" data-value="1"></span>
                                 <span className="color_ color--orange" data-value="1"></span>
                                 <span className="color_ color--green" data-value="1"></span>
@@ -95,7 +104,7 @@ function AddItems({ createAnimeList }) {
 
                             <Row xs={1} md={3} lg={4} className="g-4" style={{margin:"100px 20px 20px 20px"}}>
                                 {animeInputGroup.map((v, idx) => (
-                                    <Col>
+                                    <Col className="me-4">
                                         <Card style={{ backgroundColor: "transparent", alignItems: "center" }}>
                                             <Card.Img style={{ width: "150px", alignItems: "center" }} variant="bottom" src={v.animeImage ? v.animeImage : cosplayer} />
                                             <Card.Body>

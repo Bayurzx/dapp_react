@@ -10,7 +10,7 @@ const Navigate = ({account}) => {
             <Navbar bg="light" expand="lg">
                 <Container>
                     <img src={icon} alt="celo" className="align-left inline-block mx-2" width="30" height="30" />
-                    <Navbar.Brand href="#">Anime Recommendation</Navbar.Brand>
+                    <Navbar.Brand href="#">Your Recommendation</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -18,19 +18,20 @@ const Navigate = ({account}) => {
                             style={{ maxHeight: '200px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1">Home</Nav.Link>
-                            <Nav.Link href="#action2">Link</Nav.Link>
+                            <Nav.Link href="#addItems">Add&nbsp;Items</Nav.Link>
+                            <Nav.Link href="#currentVote">Vote</Nav.Link>
+                            <Nav.Link href="#tabs_">All&nbsp;Picks</Nav.Link>
                         </Nav>
-                        <Form className="d-flex me-5">
+                        <Form className="d-flex me-4">
                             <FormControl
                                 type="search"
                                 placeholder="Search"
-                                className="me-2"
+                                className="me-2 search"
                                 aria-label="Search"
                             />
                             <Button variant="outline-success">Search</Button>
                         </Form>
-                        <button className="btn btn-outline-info">User's Balance is {account[1]} from {account[0]}</button>
+                        <button className="btn btn-outline-warning">User's Balance is {account[1]} from {account[0]}</button>
 
                     </Navbar.Collapse>
                 </Container>

@@ -15,6 +15,8 @@ The best part is, one lucky winner from the voters keeps the entire bag 💰 whe
 Simply by joining the celo community. Your passport to vote is simply switching to the [celo network](https://medium.com/defi-for-the-people/how-to-set-up-metamask-with-celo-912d698fcafe)  (*Testnet at the time of this wrting*) or download the Celo-wallet extension on chrome. 
 
 # How we built it???
+![Architecture Diagram](https://raw.githubusercontent.com/Bayurzx/dapp_react/master/screenshots/Your%20recc.png)
+
 The app was built with the help of the `React` Library and the [ContractKit SDK](https://docs.celo.org/developer-guide/contractkit). It's currently on the [Alfajores Testnet](https://docs.celo.org/getting-started/alfajores-testnet)
 
 The application is accessible to users with both Celo-wallet extension and on Metamask using the celo Alfajores Network making it **accessible even on mobile phones**

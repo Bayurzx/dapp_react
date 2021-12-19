@@ -7,9 +7,9 @@ Help end all disagreements with a simple click of a button!
 Do you get on Reddit and Quora and all you see is fan wars... right 😅, I mean, If you are so passionate about something, you might as well make money from it... **😋**
 
 # What It Does???
-`Your Recommendation` gives you a chance to seek out recommendations on your picks from the celo community. Your picks are displayed for voting and best option wins the vote.
+`Your Recommendation` gives you a chance stake on your picks and win. Your picks are displayed for voting and best option wins the vote.
 
-The best part is, one lucky winner from the voters keeps the entire bag 💰 when the vote limit has been reached.
+When the voting ends, one lucky winner from the voters keeps the entire bag 💰 if the vote limit has been reached.
 
 # How Do You Get on Board???
 Simply by joining the celo community. Your passport to vote is simply switching to the [celo network](https://medium.com/defi-for-the-people/how-to-set-up-metamask-with-celo-912d698fcafe)  (*Testnet at the time of this wrting*) or download the Celo-wallet extension on chrome. 
@@ -111,30 +111,3 @@ View the [Developer Code Examples page](https://docs.celo.org/developer-guide/st
 -   [Discourse Forum](https://forum.celo.org/)
 
 Youtube: https://youtu.be/B9Cf504ehgE
-
-Transcript
-
-With the power of blockchain, we have developed an application that has the potential to end all disagreements. Ha ha Okay... may be just some of them.
-
-So..., It's Fry-yay...! and you wanna let loose...! so you decide to net flix and chill, but your friends just can't seem to agree on what to watch and now you are stuck with some dudes arguing over who's the strongest anime character... arrghhh!
-
-Your recommendation was designed to be a platform that allows users from around the world to give their recommedations as a vote on anything with a click of a button. 
-
-Your recommendation aims at settling at least 50 percent of all fan war on Quo ra, Tick Tock and twit tar and other micro blogging sites by the end of 2022! `funny phrase` I mean..., If you are gonna be passionate about something, you might as well make money from it...
-
-The frontend was designed, with the React Library, for efficient rendering of components, with data from the blockchain, making it dynamic and responsive to user input from the web or mobile.
-
-Thanks to the CELLO Network, gas cost, relatively, is cheap and transaction occur quickly. It is accessible, with either a metamask or the celo wallet extension from chrome.
-
-It is a single page website, which provides a straightforward approach, to captivate users attention, with it's colorful interface, well animated loading periods, and a graceful error handling user interface. 
-
-Here is the flow of data, and what the setup looks like. A person who I term as the creator adds a list of picks whom anyone in the celo community (... well except the creator) can vote on. 
-
-The groups voted are sorted on a, first come, first serve basis. That is, when a voting period has ended, the winning voter and picks are displayed here, while the next on the list is highlighted!
-
-
-And, the best part is, someone gets to keep the bag. A winner is randomly selected, when the votes reach a certain threshold. Only the creator, or a designated watcher, can activate the payout.
-
-Vote authenticity, is guaranteed, since your passport is your celoo wallet, your vote count increases, your winning chance.(it's limited though). it pays, to put one's money where one's mouth is...
-
-Thank you for checking out the project, I'm extremely excited to see, how it is implemented, It was so much fun building this app and learning about the Celo community.

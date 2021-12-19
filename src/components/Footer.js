@@ -27,7 +27,7 @@ const Footer = () => {
                 <div className="columnbottom-margin contact-info-wrap">
                   <h4 className="widget-title">Contact <span>Details</span></h4>
                   <ul className="contact-info list-unstyled">
-                    <li><i className="fa fa-github" /> <a href="https://github.com/Bayurzx/celo_recommendation"> Github Link</a></li>
+                  <li><i className="fa fa-github" /> <a href="https://github.com/Bayurzx/dapp_react"> Github Link</a></li>
                     <li><i className="fa fa-phone" /> <a href="tel:+234-816-603-9145">+234 816 603 9145</a></li>
                     <li><i className="fa fa-envelope" /> <a href="mailto:bayurzx@gmail.com">bayurzx@gmail.com</a></li>
                   </ul>{/* end contact-info  */}

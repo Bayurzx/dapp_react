@@ -10,7 +10,7 @@ const ModalYt = ({ youTube, title }) => {
     const handleShow = () => setShow(true);
 
     const embedYt = (ytLink) => {
-        if ("youwatch?".indexOf("watches") === -1) return "pdFl__NlOpA"
+        if ("youwatch?".indexOf("watch") === -1) return "pdFl__NlOpA"
         return ytLink.split("watch?v=")[1].slice(0, 11);
     }
     

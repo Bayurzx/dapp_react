@@ -105,6 +105,14 @@ function App() {
         contract.methods.voting(animeName)
           .send({ from: kit.defaultAccount })
           .on('transactionHash', hash => {
+
+            setToaster({
+              ...toaster,
+              show: true,
+              status: 'success',
+              detail: `${animeName} was voted successfully`
+            })
+
             contract.methods.isThereWinner().call()
               .then(res => {
                 console.log("isThereWinner", res);

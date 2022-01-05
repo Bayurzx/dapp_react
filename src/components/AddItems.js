@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Card, Col } from 'react-bootstrap';
 import cosplayer from '../extra/cosplayer.png'
 
-function AddItems({ createAnimeList }) {
+function AddItems({ createAnimeList, setToaster, toaster }) {
     const [animeInputGroup, setAnimeInputGroup] = useState([]);
 
     const [animeInput, setAnimeInput] = useState({ animeName: "", animeImage: "", animeYouTube: "", animeDescription: "" });
@@ -15,6 +15,13 @@ function AddItems({ createAnimeList }) {
             setAnimeInputGroup([...animeInputGroup, animeInput])
             addAnimeAnimation()
             setAnimeInput({ animeName: "", animeImage: "", animeYouTube: "", animeDescription: "" });
+            setToaster({
+                ...toaster,
+                show: true,
+                status: 'success',
+                detail: `${animeInput.animeName} was added, can still add more, click submit when done`
+            })
+
 
         }
     }

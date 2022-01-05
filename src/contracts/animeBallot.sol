@@ -62,7 +62,7 @@ contract AnimeRecomendation {
 
     uint internal groupNum; // automatically starts at zero
 
-    uint internal cost = 2e10; // the cost of 2cUSD or 2e10 or 2e18, we use 2e10 instead of 2e18 because of testnet block approval takes long
+    uint internal cost = 2e18; // the cost of 2cUSD or 2e10 or 2e18, we use 2e10 instead of 2e18 because of testnet block approval takes long
 
     uint public totalVoteCount; // track how much we will pay out
 
@@ -91,7 +91,7 @@ contract AnimeRecomendation {
         // ["Naruto", "https://i.pinimg.com/564x/d6/ca/b3/d6cab3d7ce263fbd44a6e190058ada84.jpg", "https://www.youtube.com/watch?v=mksl3tYdyK4", "Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village"], 
         // ["One Piece", "https://i.pinimg.com/564x/73/08/6a/73086a49da74704f945eff83dab20af2.jpg", "https://www.youtube.com/watch?v=S8_YwFLCh4U", "Monkey D. Luffy, a young man who, inspired by his childhood idol and powerful pirate "Red Haired" Shanks, sets off on a journey from the East Blue Sea to find the titular treasure and proclaim himself the King of the Pirates. In an effort to organize his own crew, the Straw Hat Pirates"]]
 }
-        voter_[msg.sender].voteWeight = 10; // ensures that our creator can't vote
+        voter_[msg.sender].voteWeight = 4; // ensures that our creator get only one vote
 
         for (uint8 i = 0; i < animeNames.length; i++) {
             animes_.push(Anime({

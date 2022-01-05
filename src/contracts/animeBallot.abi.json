@@ -2,6 +2,59 @@
     {
         "inputs": [
             {
+                "internalType": "string[][]",
+                "name": "animeNames",
+                "type": "string[][]"
+            }
+        ],
+        "name": "createAnimeList",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "payWinner",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "num",
+                "type": "uint256"
+            }
+        ],
+        "name": "readAnimeGroup",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "animeName",
+                "type": "string"
+            }
+        ],
+        "name": "voting",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "winningVoter",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
@@ -41,19 +94,6 @@
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "string[][]",
-                "name": "animeNames",
-                "type": "string[][]"
-            }
-        ],
-        "name": "createAnimeList",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -157,13 +197,6 @@
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "payWinner",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -307,19 +340,6 @@
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "num",
-                "type": "uint256"
-            }
-        ],
-        "name": "readAnimeGroup",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
         "inputs": [],
         "name": "totalVoteCount",
         "outputs": [
@@ -367,19 +387,6 @@
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "animeName",
-                "type": "string"
-            }
-        ],
-        "name": "voting",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
         "inputs": [],
         "name": "winningAnime",
         "outputs": [
@@ -403,13 +410,6 @@
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "winningVoter",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     }
 ]

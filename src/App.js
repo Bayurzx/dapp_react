@@ -17,9 +17,9 @@ import Group from './components/Group';
 import PrevWin from './components/PrevWin';
 import Footer from './components/Footer';
 
-const MY_ERC20_DECIMALS = 10; // I will be using 10 instead of 18 
+const MY_ERC20_DECIMALS = 18; // I will be using 10 instead of 18 
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"
-const AnimeContractAddress = "0xc342bf51CFBB8400347Ba2132b79A266C42823F2"
+const AnimeContractAddress = "0x043C9F7787e450E18ad536BC55AE248fCe6d330D"
 
 const cost = 2; // this is the cost to donate
 
@@ -348,7 +348,7 @@ function App() {
         </Col>
       </>
 
-      <AddItems createAnimeList={createAnimeList} />
+      <AddItems createAnimeList={createAnimeList} setToaster={setToaster} toaster={toaster} />
 
       {/* <Button onClick={() => setToaster({...toaster, show: false })} className="btn btn-primary btn-lg">Get group</Button> */}
 
